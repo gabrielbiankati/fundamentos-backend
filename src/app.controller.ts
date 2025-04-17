@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post, Put, Req }
 import { z } from 'zod';
 import { ZodValidationPipe } from './pipes/zod-validation-pipe';
 
-function isValidCPF(cpf: string): boolean {
+export function isValidCPF(cpf: string): boolean {
   cpf = cpf.replace(/[^\d]+/g, '');
 
   if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;

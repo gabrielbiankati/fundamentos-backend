@@ -77,13 +77,13 @@ type UpdateStatusProductBodySchema = z.infer<typeof updateStatusBodyProductBodyS
 
 @Controller('/products')
 export class AppController {
+  private products: any[] = [];
+
   constructor() {}
 
   @Post()
   @HttpCode(201) // Anotação para o erro
   create(@Body(bodyValidationPipe) body: CreateProductBodySchema) {
-    const { brand, dateManufacture, cpf, email, model, name, year } = body;
-
     return 'create';
   }
 

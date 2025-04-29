@@ -4,7 +4,7 @@ import { CreateProductController } from './create-product.controller';
 
 @Module({
   imports: [],
-  controllers: [CreateProductController],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}

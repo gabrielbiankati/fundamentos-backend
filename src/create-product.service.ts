@@ -1,6 +1,17 @@
 // SERVICE OR USECASE
 
 import { Injectable } from "@nestjs/common";
+import { PrismaService } from "./prisma.service";
+
+interface Product {
+    name: string,
+    model: string,
+    dateManufacture: string,
+    year: string,
+    brand: string,
+    email: string,
+    cpf: string
+}
 
 interface CreateProductServiceRequest {
     name: string,
@@ -18,7 +29,7 @@ type CreateProductServiceResponse = {
 
 @Injectable()
 export class CreateProductService {
-    constructor() { }
+    constructor(private prisma: PrismaService) { }
 
     async execute({
         name,
@@ -31,7 +42,7 @@ export class CreateProductService {
 
     }: CreateProductServiceRequest): Promise<CreateProductServiceResponse> {
 
-        return null;
+        return new Promise(() => {});
 
     }
 }

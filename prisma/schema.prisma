@@ -13,14 +13,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Category {
+  ELECTRONICS
+  FASHION
+  FOOD
+  MATERIAL
+}
+
 model Product {
-  id String @id @default(uuid())
-  name String
+  id                String    @id @default(uuid())
+  name              String    @unique
+  description       String?
+  price             Float
+  inStock           Int       @map("in_stock")
+  isAvailable    Boolean   @default(true) @map("is_available")
+  category          Category
+  tags              String[]
+
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime? @updatedAt @map("updated_at")
+
+  @@map("products")
 }
 
 model User {
-  id String @id @default(uuid())
-  email String @unique
+  id                String @id @default(uuid())
+  email             String @unique
 
   @@map("users")
+}
+
+model Model {
+  id String @id @default(uuid())
+  name String @unique
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("models")
 }

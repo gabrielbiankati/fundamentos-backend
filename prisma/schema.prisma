@@ -52,3 +52,13 @@ model Model {
 
   @@map("models")
 }
+
+model Profile {
+  id String @id @default(uuid())
+  AvatarUrl String? @map("avatar_url")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("profiles")
+}

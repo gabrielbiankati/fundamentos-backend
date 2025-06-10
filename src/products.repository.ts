@@ -29,4 +29,9 @@ export class ProductsRepository {
             data: product,
         })
     }
+
+    async findMany(params?: Prisma.ProductFindManyArgs): Promise<Prisma.ProductUncheckedCreateInput[]> {
+    return this.prisma.product.findMany(params);
+    }
+
 }

@@ -40,6 +40,8 @@ model User {
   id                String @id @default(uuid())
   email             String @unique
 
+  Profile Profile? // One to one (um para um, para os leigos)
+  oder Order[]
   @@map("users")
 }
 
@@ -57,8 +59,24 @@ model Profile {
   id String @id @default(uuid())
   AvatarUrl String? @map("avatar_url")
 
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
 
   @@map("profiles")
+}
+
+model Order {
+  id String @id @default(uuid())
+  total Float
+
+  userId String 
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("orders")
 }

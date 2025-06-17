@@ -1,7 +1,7 @@
 import { Body, Controller, HttpCode, Post } from "@nestjs/common";
-import { ZodValidationPipe } from "./pipes/zod-validation-pipe";
+import { ZodValidationPipe } from "src/pipes/zod-validation-pipe"; 
 import { z } from "zod";
-import { CreateProductService } from "./create-product.service";
+import { CreateProductService } from "./create-product.service"; 
 import { Category } from "@prisma/client";
 
 const createProductBodySchema = z.object({

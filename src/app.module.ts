@@ -3,7 +3,7 @@ import { CreateProductController } from './create-product.controller';
 import { PrismaService } from './prisma.service';
 import { CreateProductService } from './create-product.service';
 import { ProductsRepository } from './products.repository';
-import { CreateModelController } from './create-model.controller';
+import { CreateModelController } from './models/create-model.controller';
 import { DeleteModelController } from './delete-model.controller';
 import { DeleteProductController } from './delete-product.controller';
 import { EditModelController } from './edit-model.controller';

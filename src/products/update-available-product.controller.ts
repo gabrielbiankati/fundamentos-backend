@@ -1,6 +1,6 @@
 import { Body, Controller, HttpCode, Patch } from "@nestjs/common";
 import { z } from "zod";
-import { ZodValidationPipe } from "./pipes/zod-validation-pipe";
+import { ZodValidationPipe } from "src/pipes/zod-validation-pipe";
 import { UpdateAvailableProductService } from "./update-available-product.service";
 
 const updateAvailableProductBodySchema = z.object({

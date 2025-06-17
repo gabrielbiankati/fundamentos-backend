@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { ProductsRepository } from "src/products.repository"; 
+import { ProductsRepository } from "src/products/products.repository"; 
 import { Category } from "@prisma/client";
 
 interface EditProductServiceRequest {

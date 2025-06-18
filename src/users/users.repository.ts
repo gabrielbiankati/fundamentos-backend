@@ -29,9 +29,9 @@ export class UsersRepository {
     ]);
   }
 
-  async create(product: Prisma.UserUncheckedCreateInput): Promise<void> {
+  async create(data: Prisma.UserUncheckedCreateInput): Promise<void> {
     await this.prisma.user.create({
-      data: product,
+      data,
     });
   }
 

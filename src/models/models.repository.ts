@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 
 @Injectable()
 export class ModelsRepository {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async findManyRecent(): Promise<Prisma.ModelUncheckedCreateInput[] | null> {
     return await this.prisma.model.findMany();
@@ -41,5 +41,15 @@ export class ModelsRepository {
         id: model.id?.toString(),
       }
     });
+  }
+
+  async findByName(name: string): Promise<Prisma.ModelUncheckedCreateInput | null> {
+    const model = this.prisma.model.findUnique({
+      where: {
+        name,
+      },
+    });
+
+    return model;
   }
 }

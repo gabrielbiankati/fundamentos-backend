@@ -43,11 +43,13 @@ export class UsersRepository {
     });
   }
 
-  async findByEmail(email: string) {
-  return await this.prisma.user.findUnique({
-    where: { 
-      email 
-    },
+  async findByEmail(email: string): Promise<Prisma.UserUncheckedCreateInput | null> {
+    const user = this.prisma.user.findUnique({
+      where: {
+        email,
+      }
     });
+
+    return user;
   }
 }

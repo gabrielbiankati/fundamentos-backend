@@ -17,7 +17,7 @@ export class UpdateAvailableProductController {
   constructor(private updateAvailableProduct: UpdateAvailableProductService) {}
 
   @Patch()
-  @HttpCode(204)
+  @HttpCode(200)
   async handle(
     @Body(bodyValidationPipe) body: UpdateAvailableProductBodySchema,
   ) {

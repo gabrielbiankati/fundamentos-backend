@@ -1,5 +1,6 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { ModelsRepository } from "./models.repository";
+import { NotFoundError } from "rxjs";
 export interface Model {
   id: string;
   name: string;
@@ -25,7 +26,7 @@ export class GetModelByIdService {
     const model = await this.modelsRepository.findById(id);
 
     if (!model) {
-      throw new Error("Model not found");
+      throw new NotFoundException("Model not found");
     }
 
     const newModel: Model = {

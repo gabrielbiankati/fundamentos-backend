@@ -12,6 +12,12 @@ export class CreateUserService {
   async execute({
     email,
   }: CreateUserServiceRequest): Promise<void> {
+    const userWithSameName = await this.usersRepository.findByEmail(email);
+
+    if (userWithSameName) {
+      throw new Error("User with this email already exists.");
+    }
+
     await this.usersRepository.create({ email })
   }
 }

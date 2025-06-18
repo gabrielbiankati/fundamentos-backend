@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { ProductsRepository } from "src/products/products.repository"; 
 import { Category } from "@prisma/client";
 
@@ -30,7 +30,7 @@ export class EditProductService {
     const product = await this.productsRepository.findById(id);
 
     if (!product) {
-      throw new Error("Product not found");
+      throw new NotFoundException("Product not found");
     }
 
     product.name = name;

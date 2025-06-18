@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { ProductsRepository } from "src/products/products.repository";
 
 interface DeleteProductServiceRequest {
@@ -15,7 +15,7 @@ export class DeleteProductService {
     const product = await this.productsRepository.findById(id);
 
     if (!product) {
-      throw new Error("Product not found");
+      throw new NotFoundException("Product not found");
     }
 
     await this.productsRepository.delete(product);

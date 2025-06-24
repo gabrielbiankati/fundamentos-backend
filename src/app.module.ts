@@ -45,10 +45,12 @@ import { EditProfileController } from './profiles/edit-profile.controller';
 import { EditProfileService } from './profiles/edit-profile.service';
 import { GetProfileByIdController } from './profiles/get-profile-by-id.controller';
 import { GetProfileByIdService } from './profiles/get-profile-by-id.service';
+import { OrdersRepository } from './orders/orders.repository';
+import { ProfilesRepository } from './profiles/profiles.repository';
 
 @Module({
   imports: [],
   controllers: [DeleteUserController ,GetUserByIdController, FetchRecentUsersController, CreateProductController, CreateModelController, DeleteModelController, DeleteProductController, EditModelController, EditProductController, FetchRecentModelsController, FetchRecentProductsController, GetProductByIdController, GetModelByIdController, UpdateAvailableProductController, CreateUserController, CreateOrderController, CreateProfileController, GetOrderByIdController, GetOrderByUserIdController, EditProfileController, GetProfileByIdController],
-  providers: [DeleteUserService ,GetUserByIdService ,FetchRecentUsersService, CreateUserService ,PrismaService, CreateProductService, CreateModelService, DeleteModelService, DeleteProductService, EditModelService, EditProductService, FetchRecentModelsService, FetchRecentProductsService, GetProductByIdService, GetModelByIdService, UpdateAvailableProductService, ProductsRepository, ModelsRepository, UsersRepository, CreateOrderService, CreateProfileService, GetOrderByIdService, GetOrderByUserIdService, EditProfileService, GetProfileByIdService],
+  providers: [DeleteUserService ,GetUserByIdService ,FetchRecentUsersService, CreateUserService ,PrismaService, CreateProductService, CreateModelService, DeleteModelService, DeleteProductService, EditModelService, EditProductService, FetchRecentModelsService, FetchRecentProductsService, GetProductByIdService, GetModelByIdService, UpdateAvailableProductService, ProductsRepository, ModelsRepository, UsersRepository, CreateOrderService, CreateProfileService, GetOrderByIdService, GetOrderByUserIdService, EditProfileService, GetProfileByIdService, OrdersRepository, ProfilesRepository, ],
 })
 export class AppModule {}

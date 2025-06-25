@@ -17,12 +17,12 @@ interface GetProfileByIdServiceResponse {
 
 @Injectable()
 export class GetProfileByIdService {
-  constructor(private profileRepository: ProfilesRepository) {}
+  constructor(private profilesRepository: ProfilesRepository) {}
 
   async execute({
     id,
   }: GetProfileByIdServiceRequest): Promise<GetProfileByIdServiceResponse> {
-    const profile = await this.profileRepository.findById(id);
+    const profile = await this.profilesRepository.findById(id);
 
     if (!profile) {
       throw new NotFoundException("Profile not found.");

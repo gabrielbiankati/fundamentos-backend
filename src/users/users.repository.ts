@@ -7,31 +7,32 @@ export class UsersRepository {
   constructor(private prisma: PrismaService) {}
 
   async findManyRecent(): Promise<Prisma.UserUncheckedCreateInput[] | null> {
-    return await this.prisma.user.findMany();
+    const users = this.prisma.user.findMany();
+
+    return users;
   }
 
-  async findById(id: string): Promise<Prisma.UserUncheckedCreateInput | null> {
+  async findById(id: string): Promise<any> {
     return await this.prisma.user.findUnique({
-      where: {
-        id,
-      }
+      where: { id },
+      include: {
+        profile: true,
+      },
     });
   }
 
   async save(data: Prisma.UserUncheckedCreateInput): Promise<void> {
-    await Promise.all([
-      this.prisma.user.update({
-        where: {
-          id: data.id?.toString(),
-        },
-        data,
-      }),
-    ]);
-  }
+  const { profile, ...userData } = data; 
 
-  async create(data: Prisma.UserUncheckedCreateInput): Promise<void> {
-    await this.prisma.user.create({
-      data,
+  await this.prisma.user.update({
+    where: { id: userData.id?.toString() },
+    data: userData,
+    });
+  }
+  
+  async create(user: Prisma.UserUncheckedCreateInput): Promise<Prisma.UserUncheckedCreateInput> {
+    return await this.prisma.user.create({
+      data: user,
     });
   }
 

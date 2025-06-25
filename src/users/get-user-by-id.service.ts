@@ -1,9 +1,11 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { UsersRepository } from "./users.repository"; 
+import { Profile } from "@prisma/client";
 
 export interface User {
   id: string;
   email: string;
+  profile?: Profile;
   createdAt: string | Date | undefined;
   updatedAt: string | Date | null | undefined;
 }
@@ -32,6 +34,7 @@ export class GetUserByIdService {
     const newUser: User = {
       id: user.id?.toString() || "",
       email: user.email,
+      profile: user.profile || undefined,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     };

@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable, NotFoundException } from "@nestjs/common";
 import { ProfilesRepository } from "./profiles.repository";
 
 interface EditProfileServiceRequest {
@@ -10,15 +10,13 @@ interface EditProfileServiceRequest {
 export class EditProfileService {
   constructor(private profilesRepository: ProfilesRepository) {}
 
-  async execute({ avatarUrl, id }: EditProfileServiceRequest): Promise<void> {
+  async execute({ id, avatarUrl }: EditProfileServiceRequest): Promise<void> {
     const profile = await this.profilesRepository.findById(id);
 
     if (!profile) {
-      throw new HttpException("Profile not found.", HttpStatus.NOT_FOUND);
+      throw new NotFoundException("Profile not found.");
     }
 
-    profile.avatarUrl = avatarUrl;
-
-    await this.profilesRepository.update(id, { avatarUrl });
+    await this.profilesRepository.save({id,  avatarUrl});
   }
 }

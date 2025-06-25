@@ -9,7 +9,7 @@ export class ProfilesRepository {
   async findById(id: string): Promise<any> {
     return await this.prisma.profile.findUnique({
       where: {
-        id,
+        id
       },
       include: { user: true },
     });
@@ -28,11 +28,14 @@ export class ProfilesRepository {
     });
   }
 
-  async delete(profile: Profile): Promise<void> {
-    await this.prisma.profile.delete({
-      where: {
-        id: profile.id?.toString(),
-      },
-    });
+  async save(data: Prisma.ProfileUpdateInput): Promise<void> {
+    await Promise.all([
+      this.prisma.profile.update({
+        where: {
+          id: data.id?.toString(),
+        },
+        data,
+      }),
+    ]);
   }
 }

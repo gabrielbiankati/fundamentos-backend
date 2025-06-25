@@ -21,9 +21,12 @@ export class CreateProfileController {
   async handle(@Body(bodyValidationPipe) body: CreateProfileBodySchema) {
     const { userId, avatarUrl } = body;
 
-    await this.createProfile.execute({
-      userId,
-      avatarUrl,
+    const profile = await this.createProfile.execute({
+      userId, avatarUrl
     });
+    
+    return {
+      profile
+    }
   }
 }

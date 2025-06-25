@@ -26,5 +26,7 @@ export class CreateUserController {
     await this.createUser.execute({
       email,
     });
+
+    return { email };
   }
 }

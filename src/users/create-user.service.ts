@@ -18,6 +18,11 @@ export class CreateUserService {
       throw new BadRequestException("User with this email already exists.");
     }
 
-    await this.usersRepository.create({ email })
+
+    const user = {
+      email
+    };
+
+    await this.usersRepository.create(user);
   }
 }

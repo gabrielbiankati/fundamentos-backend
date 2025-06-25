@@ -47,10 +47,12 @@ import { GetProfileByIdController } from './profiles/get-profile-by-id.controlle
 import { GetProfileByIdService } from './profiles/get-profile-by-id.service';
 import { OrdersRepository } from './orders/orders.repository';
 import { ProfilesRepository } from './profiles/profiles.repository';
+import { EditUserController } from './users/edit-user.controller';
+import { EditUserService } from './users/edit-user.service';
 
 @Module({
   imports: [],
-  controllers: [DeleteUserController ,GetUserByIdController, FetchRecentUsersController, CreateProductController, CreateModelController, DeleteModelController, DeleteProductController, EditModelController, EditProductController, FetchRecentModelsController, FetchRecentProductsController, GetProductByIdController, GetModelByIdController, UpdateAvailableProductController, CreateUserController, CreateOrderController, CreateProfileController, GetOrderByIdController, GetOrderByUserIdController, EditProfileController, GetProfileByIdController],
-  providers: [DeleteUserService ,GetUserByIdService ,FetchRecentUsersService, CreateUserService ,PrismaService, CreateProductService, CreateModelService, DeleteModelService, DeleteProductService, EditModelService, EditProductService, FetchRecentModelsService, FetchRecentProductsService, GetProductByIdService, GetModelByIdService, UpdateAvailableProductService, ProductsRepository, ModelsRepository, UsersRepository, CreateOrderService, CreateProfileService, GetOrderByIdService, GetOrderByUserIdService, EditProfileService, GetProfileByIdService, OrdersRepository, ProfilesRepository, ],
+  controllers: [DeleteUserController ,GetUserByIdController, FetchRecentUsersController, CreateProductController, CreateModelController, DeleteModelController, DeleteProductController, EditModelController, EditProductController, FetchRecentModelsController, FetchRecentProductsController, GetProductByIdController, GetModelByIdController, UpdateAvailableProductController, CreateUserController, CreateOrderController, CreateProfileController, GetOrderByIdController, GetOrderByUserIdController, EditProfileController, GetProfileByIdController, EditUserController],
+  providers: [DeleteUserService ,GetUserByIdService ,FetchRecentUsersService, CreateUserService ,PrismaService, CreateProductService, CreateModelService, DeleteModelService, DeleteProductService, EditModelService, EditProductService, FetchRecentModelsService, FetchRecentProductsService, GetProductByIdService, GetModelByIdService, UpdateAvailableProductService, ProductsRepository, ModelsRepository, UsersRepository, CreateOrderService, CreateProfileService, GetOrderByIdService, GetOrderByUserIdService, EditProfileService, GetProfileByIdService, OrdersRepository, ProfilesRepository, EditUserService],
 })
 export class AppModule {}

@@ -12,10 +12,22 @@ services:
     volumes:
       - ./data/pg:/data/postgres
 
-  cache:
-    container_name: fundamentos-backend-cache
-    image: redis
+  nestjs:
+    container_name: trabalho-docker-fundamentosbackend
+    build: .
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    entrypoint: ["sh", "-c", "npx prisma migrate deploy && node dist/main"]
+    restart: on-failure
+
+  nginx:
+    image: nginx
+    container_name: nginx-proxy
     ports:
-      - 6379:6379
+      - 8080:80
+    depends_on:
+      - nestjs
     volumes:
-      - ./data/redis:/data
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
